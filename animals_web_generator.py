@@ -15,13 +15,16 @@ animals_data = load_data('animals_data.json')
 
 output = "" # define an empty string
 for animal in animals_data:
-    output += f'Name: {animal["name"]}\n'
-    output += f'Diet: {animal["characteristics"]["diet"]}\n'
-    output += f'Location: {animal["locations"][0]}\n'
+    output += '<li class="cards__item">'
+    output += f'Name: {animal["name"]}<br/>\n'
+    output += f'Diet: {animal["characteristics"]["diet"]}<br/>\n'
+    output += f'Location: {animal["locations"][0]}<br/>\n'
     try:
-        output += f'Type: {animal["characteristics"]["type"]}\n\n'
+        output += f'Type: {animal["characteristics"]["type"]}<br/>\n'
+        output += '<li/><br/>\n'
     except KeyError:
-        output += f'\n'
+        output += f'<li/><br/>\n'
+
 filler_txt = "__REPLACE_ANIMALS_INFO__"
 website_txt = html_content.replace(filler_txt, output)
 
