@@ -1,4 +1,4 @@
-import json
+import data_fetcher
 
 
 def load_data(file_path):
@@ -30,8 +30,10 @@ def main():
     with open("animals_template.html", "r", encoding="utf-8") as file:
         html_content = file.read()
 
-    # Load animals data from JSON file
-    animals_data = load_data('animals_data.json')
+    animal_name = input("Please enter an animal: ")
+
+    # Load animals data from API
+    animals_data = data_fetcher.fetch_data(animal_name)
 
     # Serialize all animals into HTML
     output = ''.join([serialize_animal(animal_obj) for animal_obj in animals_data])
