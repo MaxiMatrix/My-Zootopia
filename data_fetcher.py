@@ -1,10 +1,15 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+#importing API-KEY from .env
+load_dotenv()
+API_KEY = os.getenv('API_KEY')
 
 
-
-API_KEY = "guhiF9ogElP1Mspr1iv4Ug==I3E0BLawgfdebKAx"
 REQUEST_URL = "https://api.api-ninjas.com/v1/animals?name="
 OUTPUT_FILE_NAME = "output.html"
+
 
 def save_to_file(text, file_name):
     with open(file_name, "w") as handle:
