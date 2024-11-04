@@ -1,10 +1,17 @@
 import data_fetcher
+import json
 
 
 def load_data(file_path):
-    """Loads a JSON file"""
-    with open(file_path, "r", encoding="utf-8") as handle:  # Ensure UTF-8 encoding for JSON file
+    """Loads a JSON file, Ensure UTF-8 encoding for JSON file"""
+    with open(file_path, "r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def write_data(file_path, text):
+    """Writes a JSON FILE with UTF-8 encoding"""
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(text)
 
 
 def serialize_animal(animal_obj):
@@ -26,6 +33,8 @@ def serialize_animal(animal_obj):
 
 
 def main():
+    """Main function to generate an HTML file containing information about animals.
+    The generated HTML file can be used to display animal information on a webpage."""
     # Read the HTML template with UTF-8 encoding
     with open("animals_template.html", "r", encoding="utf-8") as file:
         html_content = file.read()
@@ -43,9 +52,7 @@ def main():
     website_txt = html_content.replace(filler_txt, output)
 
     # Write the final HTML output to a file with UTF-8 encoding
-    with open("animals.html", "w", encoding="utf-8") as file:
-        file.write(website_txt)
-
+    write_data("animals.html", website_txt)
 
 if __name__ == "__main__":
     main()

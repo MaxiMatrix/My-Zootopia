@@ -12,8 +12,10 @@ OUTPUT_FILE_NAME = "output.html"
 
 
 def save_to_file(text, file_name):
+    """Saves data in another file"""
     with open(file_name, "w") as handle:
         handle.write(text)
+
 
 def fetch_data(animal_name):
     """
